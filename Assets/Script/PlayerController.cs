@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    
+    
     // 속도 조정 변수
     [SerializeField]
     private float walkSpeed;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool isRun = false;
     private bool isCrouch = false;
     private bool isGround = true;
+
 
 
     // 앉았을 때 얼마나 앉을지 결정하는 변수.
@@ -71,6 +74,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //커서 고정
+        Cursor.lockState = CursorLockMode.Locked;
+        
+
+        //커서 숨기기
+        Cursor.visible = false;
+
 
         IsGround();
         TryJump();
@@ -174,6 +185,22 @@ public class PlayerController : MonoBehaviour
             RunningCancel();
         }
     }
+
+
+    // 뒤 누를시 달리기 불가
+    private void NR()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            
+        }
+    }
+
+
 
     // 달리기 실행
     private void Running()
