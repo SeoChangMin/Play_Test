@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float runSpeed;
     [SerializeField]
     private float crouchSpeed;
+    [SerializeField]
+    private float walkbackSpeed;
 
     private float applySpeed;
 
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private bool isRun = false;
     private bool isCrouch = false;
     private bool isGround = true;
+    private bool isSlow = false;
+    
 
 
 
@@ -38,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider capsuleCollider;
 
 
-    // 민감도
+    // 마우스 민감도
     [SerializeField]
     private float lookSensitivity;
 
@@ -87,11 +91,26 @@ public class PlayerController : MonoBehaviour
         TryJump();
         TryRun();
         TryCrouch();
+        WalkBack();
         Move();
         CameraRotation();
         CharacterRotation();
 
     }
+
+
+
+
+
+
+
+
+    ///-------------------------------동작 시작
+
+
+
+
+
 
     // 앉기 시도
     private void TryCrouch()
@@ -101,7 +120,9 @@ public class PlayerController : MonoBehaviour
             Crouch();
         }
 
+
     }
+
 
 
     // 앉기 동작
@@ -119,10 +140,13 @@ public class PlayerController : MonoBehaviour
             applySpeed = walkSpeed;
             applyCrouchPosY = originPosY;
         }
+        
 
         StartCoroutine(CrouchCoroutine());
 
     }
+
+
 
     // 부드럽게
     IEnumerator CrouchCoroutine()
@@ -136,7 +160,7 @@ public class PlayerController : MonoBehaviour
             count++;
             _posY = Mathf.Lerp(_posY, applyCrouchPosY, 0.3f);
             theCamera.transform.localPosition = new Vector3(0, _posY, 0);
-            if (count > 15)
+            if (count > 13)
                 break;
             yield return null;
         }
@@ -188,15 +212,15 @@ public class PlayerController : MonoBehaviour
 
 
     // 뒤 누를시 달리기 불가
-    private void NR()
+    private void WalkBack()
     {
         if (Input.GetKey(KeyCode.S))
         {
-            
+            Slow();
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.S))
         {
-            
+            SlowCancel();
         }
     }
 
@@ -210,6 +234,7 @@ public class PlayerController : MonoBehaviour
 
         isRun = true;
         applySpeed = runSpeed;
+
     }
 
 
@@ -217,6 +242,30 @@ public class PlayerController : MonoBehaviour
     private void RunningCancel()
     {
         isRun = false;
+        applySpeed = walkSpeed;
+    }
+
+
+    // 뒤로 걸을때 실행
+    private void Slow()
+    {
+        if (isCrouch)
+        {
+            isSlow = false;
+        }
+        else
+        {
+            isSlow = true;
+            applySpeed = walkbackSpeed;
+        }
+        
+    }
+
+
+    // 뒤로 걷기 취소
+    private void SlowCancel()
+    {
+        isSlow = false;
         applySpeed = walkSpeed;
     }
 
@@ -236,6 +285,25 @@ public class PlayerController : MonoBehaviour
         myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
     }
 
+
+
+
+
+    ///----------------------------캐릭터 동작끝
+
+
+
+
+
+
+
+
+
+
+
+    //-----------------------------캐릭터 시야움직임
+
+
     // 좌우 캐릭터 회전
     private void CharacterRotation()
     {
@@ -245,7 +313,7 @@ public class PlayerController : MonoBehaviour
         myRigid.MoveRotation(myRigid.rotation * Quaternion.Euler(_characterRotationY));
     }
 
-
+    
 
     // 상하 카메라 회전
     private void CameraRotation()
