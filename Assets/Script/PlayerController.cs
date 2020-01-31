@@ -64,12 +64,23 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
+        
         myRigid = GetComponent<Rigidbody>();
         applySpeed = walkSpeed;
 
         // 초기화.
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
+
+
+
+        //커서 고정
+        Cursor.lockState = CursorLockMode.Locked;
+
+
+        //커서 숨기기
+        Cursor.visible = false;
+
     }
 
 
@@ -78,26 +89,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //커서 고정
-        Cursor.lockState = CursorLockMode.Locked;
-        
-
-        //커서 숨기기
-        Cursor.visible = false;
+        { 
 
 
-        IsGround();
-        TryJump();
-        TryRun();
-        TryCrouch();
-        WalkBack();
-        Move();
-        CameraRotation();
-        CharacterRotation();
+            IsGround();
+            TryJump();
+            TryRun();
+            TryCrouch();
+            WalkBack();
+            Move();
+            CameraRotation();
+            CharacterRotation();
+            //Camera dash view
+            DashView();
 
+        }
     }
-
 
 
 
@@ -115,7 +122,7 @@ public class PlayerController : MonoBehaviour
     // 앉기 시도
     private void TryCrouch()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isGround)
         {
             Crouch();
         }
@@ -148,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    // 부드럽게
+    // 앉기 부드럽게
     IEnumerator CrouchCoroutine()
     {
 
@@ -200,11 +207,11 @@ public class PlayerController : MonoBehaviour
     // 달리기 시도
     private void TryRun()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) && isGround)
         {
             Running();
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.W))
         {
             RunningCancel();
         }
@@ -244,6 +251,7 @@ public class PlayerController : MonoBehaviour
         isRun = false;
         applySpeed = walkSpeed;
     }
+
 
 
     // 뒤로 걸을때 실행
@@ -289,12 +297,8 @@ public class PlayerController : MonoBehaviour
 
 
 
+
     ///----------------------------캐릭터 동작끝
-
-
-
-
-
 
 
 
@@ -325,5 +329,31 @@ public class PlayerController : MonoBehaviour
 
         theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
     }
+
+
+
+
+
+    // 달릴시 보이는 시야각 변경
+
+    private void DashView()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) && isGround)
+        {
+            theCamera.fieldOfView = 72f;
+        }
+
+        else
+        {
+            theCamera.fieldOfView = 60.2f;
+        }
+    }
+
+
+
+
+
+
+
 
 }
