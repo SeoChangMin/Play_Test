@@ -338,7 +338,7 @@ public class PlayerController : MonoBehaviour
 
     private void DashView()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) && isGround)
         {
             theCamera.fieldOfView = 72f;
         }
