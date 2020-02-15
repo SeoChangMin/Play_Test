@@ -38,6 +38,16 @@ public class PlayerController : MonoBehaviour
     private float originPosY;
     private float applyCrouchPosY;
 
+
+
+    //달릴 때 얼마나 시야가 벌어지는지 결정하는 변수.
+    [SerializeField]
+    private float applyDash;
+
+
+
+
+
     // 땅 착지 여부
     private CapsuleCollider capsuleCollider;
 
@@ -207,11 +217,11 @@ public class PlayerController : MonoBehaviour
     // 달리기 시도
     private void TryRun()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) && isGround)
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
             Running();
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.LeftShift)&&!isCrouch)
         {
             RunningCancel();
         }
@@ -225,7 +235,7 @@ public class PlayerController : MonoBehaviour
         {
             Slow();
         }
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.S)&&!isCrouch)
         {
             SlowCancel();
         }
@@ -260,6 +270,7 @@ public class PlayerController : MonoBehaviour
         if (isCrouch)
         {
             isSlow = false;
+            applySpeed = crouchSpeed;
         }
         else
         {
@@ -338,21 +349,18 @@ public class PlayerController : MonoBehaviour
 
     private void DashView()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) && isGround)
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
-            theCamera.fieldOfView = 72f;
+            theCamera.fieldOfView = 65f;
         }
 
         else
         {
             theCamera.fieldOfView = 60.2f;
         }
+
+       
     }
-
-
-
-
-
 
 
 
