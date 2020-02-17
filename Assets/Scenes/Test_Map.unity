@@ -683,6 +683,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2099873678437252673, guid: 522b7fb5f61914b4bbd7e4738caabb5a,
+        type: 3}
+      propertyPath: field of view
+      value: 60.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099873678603870146, guid: 522b7fb5f61914b4bbd7e4738caabb5a,
+        type: 3}
+      propertyPath: applyDash
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099873678603870146, guid: 522b7fb5f61914b4bbd7e4738caabb5a,
+        type: 3}
+      propertyPath: applyDashIdle
+      value: 60.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099873678603870146, guid: 522b7fb5f61914b4bbd7e4738caabb5a,
+        type: 3}
+      propertyPath: FovIdle
+      value: 60.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2099873678603870148, guid: 522b7fb5f61914b4bbd7e4738caabb5a,
         type: 3}
       propertyPath: m_Name
