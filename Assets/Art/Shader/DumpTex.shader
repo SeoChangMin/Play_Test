@@ -16,7 +16,62 @@
 
         CGPROGRAM
        
-        #pragma surface surf Standard 
+        #pragma surface surf Kim
+
+
+			float4 LightingKim(SurfaceOutput s, float3 lightDir, float atten)
+		{
+			float NdotL = dot(s.Normal,lightDir);//*0.5 + 0.5;
+
+
+
+
+			//////////////////////////////////////-- 라이팅 경계 계산
+
+			float SetCAtten = NdotL;
+
+			if (SetCAtten < 0.1) {
+
+				SetCAtten = 0;
+
+			}
+			else {
+
+				SetCAtten = 1;
+
+			}
+
+
+			//////////////////////////////////////--계산종료
+
+
+
+
+			/////////////////////////////////////-- 셰도우 계산
+
+			float ShadowSet = NdotL;
+
+			ShadowSet = (ShadowSet * (SetCAtten*0.8)) * _LightColor0 * atten;
+
+			////////////////////////////////////-- 셰도우 계산종료
+
+
+
+
+
+
+
+
+			float4 c;
+
+
+			//c.rgb = ShadowSet; // ShadowSet*atten;
+			c.rgb = s.Albedo *ShadowSet;
+			c.a = s.Alpha;
+
+			return c;
+		}
+
 
        
         #pragma target 3.0
@@ -42,7 +97,7 @@
             
         UNITY_INSTANCING_BUFFER_END(Props)
 
-        void surf (Input IN, inout SurfaceOutputStandard o)
+        void surf (Input IN, inout SurfaceOutput o)
         {
             
 			float2 topUV = float2(IN.worldPos.x, IN.worldPos.z);

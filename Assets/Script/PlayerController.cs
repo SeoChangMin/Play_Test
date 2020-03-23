@@ -42,8 +42,11 @@ public class PlayerController : MonoBehaviour
 
     //달릴 때 얼마나 시야가 벌어지는지 결정하는 변수.
     [SerializeField]
-    private float applyDash;
+    private float fovIdle = 60;
 
+    [SerializeField]
+    private float applyDash = 10;
+    private float SetApplyDash = 0;
 
 
 
@@ -347,11 +350,19 @@ public class PlayerController : MonoBehaviour
 
     // 달릴시 보이는 시야각 변경
 
-    private void DashView()
+    private void  DashView()
     {
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
-            theCamera.fieldOfView = 65f;
+          
+
+            StartCoroutine(SetApplyDashSet());
+
+            theCamera.fieldOfView = fovIdle + SetApplyDash;
+
+
+
+            
         }
 
         else
@@ -362,6 +373,21 @@ public class PlayerController : MonoBehaviour
        
     }
 
+    IEnumerator SetApplyDashSet()
+    {
+      
+
+       if (SetApplyDash <= applyDash)
+        {
+            SetApplyDash++;
+
+          
 
 
-}
+            yield return null;
+        }
+    }
+
+
+
+    }

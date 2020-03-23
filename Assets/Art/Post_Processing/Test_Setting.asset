@@ -104,10 +104,10 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.9377853, y: 0.9703331, z: 1, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 1, y: 0.97104764, z: 0.9995347, w: 0}
   gain:
     overrideState: 1
     value: {x: 1, y: 1, z: 1, w: 0}
@@ -748,7 +748,7 @@ MonoBehaviour:
       - 0.984375
       - 0.9921875
   hueVsHueCurve:
-    overrideState: 0
+    overrideState: 1
     value:
       curve:
         serializedVersion: 2
@@ -889,11 +889,65 @@ MonoBehaviour:
       - 0.5
       - 0.5
   hueVsSatCurve:
-    overrideState: 0
+    overrideState: 1
     value:
       curve:
         serializedVersion: 2
-        m_Curve: []
+        m_Curve:
+        - serializedVersion: 3
+          time: 0.14098361
+          value: 0.5
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.35081968
+          value: 0.5
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.5672131
+          value: 0.5140845
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.6918033
+          value: 0.5140845
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.7770492
+          value: 0.5
+          inSlope: -0.06508726
+          outSlope: -0.06508726
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.83278686
+          value: 0.5
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -946,68 +1000,68 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
+      - 0.5000005
+      - 0.5000643
+      - 0.50022954
+      - 0.5004883
+      - 0.50083256
+      - 0.5012544
+      - 0.5017459
+      - 0.502299
+      - 0.5029059
+      - 0.5035585
+      - 0.504249
+      - 0.5049693
+      - 0.5057115
+      - 0.50646764
+      - 0.5072298
+      - 0.50799
+      - 0.5087403
+      - 0.5094727
+      - 0.51017934
+      - 0.51085216
+      - 0.5114833
+      - 0.51206475
+      - 0.51258856
+      - 0.51304674
+      - 0.51343143
+      - 0.51373464
+      - 0.5139484
+      - 0.5140648
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140845
+      - 0.5140239
+      - 0.5134901
+      - 0.51249105
+      - 0.51113135
+      - 0.5095154
+      - 0.50774765
+      - 0.5059327
+      - 0.5041749
+      - 0.50257874
+      - 0.5012487
+      - 0.50028926
+      - 0.49976623
+      - 0.4995188
+      - 0.49946433
+      - 0.4995428
+      - 0.49969432
+      - 0.49985895
+      - 0.49997675
       - 0.5
       - 0.5
       - 0.5
