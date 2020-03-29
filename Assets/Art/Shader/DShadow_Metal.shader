@@ -1,4 +1,4 @@
-﻿Shader "Custom/DShadow_Set"
+﻿Shader "Custom/DShadow_Metal"
 {
     Properties
     {
@@ -74,7 +74,7 @@
 
 			/////////////////////////////////////-- 셰도우 계산
 
-			float ShadowSet = NdotL;
+			float ShadowSet = NdotL*1.2;
 
 			ShadowSet = (ShadowSet * (SetCAtten*0.8)) * atten;
 
